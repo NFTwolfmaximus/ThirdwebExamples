@@ -3,7 +3,7 @@
 Once you have this code base run the below to install dependencies. 
 
 ```bash
-yarn instal 
+yarn install
 ```
 
 This example is to describe how to switch chain providers using Thirdweb. This version will runs 0.9.8 of the Thirdweb SDK.
