@@ -31,11 +31,6 @@ const Home: NextPage = () => {
     setSelectedChain(dropdownChain)
   }
 
-
-  if (wrongNetwork) {
-
-  }
-
   return (
 
     <div className={styles.container}>
