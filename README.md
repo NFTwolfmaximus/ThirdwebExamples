@@ -51,7 +51,69 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 ```
 
+## Performing The Switch 
+**In our index.tsx file we will first need to import our Chain Context.**
+```bash
+import ChainContext from "../Context/Chain";
+```
 
+**Then we will create a selectedChain varaiable and set it equal to what the value is in our Context** 
+```bash
+  const { selectedChain, setSelectedChain } = useContext(ChainContext);
+```
+
+**For Thirdweb hooks we will need** 
+```bash
+  const wrongNetwork = useNetworkMismatch()
+  const activeChain = useActiveChain();
+  const switchChain = useSwitchChain();
+```
+useNetworkMismatch - Compares the users wallet connection to the Provider value in our Dapp 
+
+useActiveChain - Return the value of our currently selected Provider chain.
+
+switchChain - Prompts a switch network event on the users connected wallet. 
+
+**Providing a List of chains for the user to select**
+Add as many chains as you would like your user to have available as options on your select tag. 
+ ```bash
+        <div>
+            <select
+              value={String(selectedChain.chainId)}
+              onChange={(e) => translateChainID(parseInt(e.target.value))}
+            >
+              {/* <option value={String(Polygon.chainId)}>Mumbai</option>
+              <option value={String(Goerli.chainId)}>Goerli</option> */}
+              <option value={String(Ethereum.chainId)}>Ethereum</option>
+              <option value={String(Polygon.chainId)}>Polygon</option>
+
+            </select>
+        </div>
+ ```
+
+**Converting User Selection to Chain - translateChainID()**
+This method will convert our String value into the chainID that our Context and Thirdweb Provider require. 
+
+Match the cases in the Switch statement with the options you offer. 
+
+```bash
+ const translateChainID = (chainId: number) => {
+    let dropdownChain: Chain;
+    dropdownChain = Ethereum
+
+    switch (chainId) {
+      case 80001: dropdownChain = Mumbai
+        break;
+      case 5: dropdownChain = Goerli
+        break;
+      case 137: dropdownChain = Polygon
+        break;
+      default: dropdownChain = Ethereum
+        break;
+    }
+    setSelectedChain(dropdownChain)
+  }
+```
 
 ## Learn More
 
