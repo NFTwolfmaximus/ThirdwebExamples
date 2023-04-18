@@ -4,7 +4,7 @@ import { Chain, Ethereum, Goerli, Mumbai, Polygon } from "@thirdweb-dev/chains";
 import type { NextPage } from "next";
 import styles from "../styles/Home.module.css";
 import ChainContext from "../Context/Chain";
-import { useContext, useState } from "react";
+import { useContext} from "react";
 
 const Home: NextPage = () => {
 
